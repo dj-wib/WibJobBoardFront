@@ -1,3 +1,32 @@
+/* fonts */
+/* kumbh-sans-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Kumbh Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../src/sources/fonts/kumbh-sans-v20-latin-regular.eot'); /* IE9 Compat Modes */
+  src: url('../src/sources/fonts/kumbh-sans-v20-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../src/sources/fonts/kumbh-sans-v20-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../src/sources/fonts/kumbh-sans-v20-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../src/sources/fonts/kumbh-sans-v20-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../src/sources/fonts/kumbh-sans-v20-latin-regular.svg#KumbhSans') format('svg'); /* Legacy iOS */
+}
+/* kumbh-sans-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Kumbh Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../src/sources/fonts/kumbh-sans-v20-latin-700.eot'); /* IE9 Compat Modes */
+  src: url('../src/sources/fonts/kumbh-sans-v20-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../src/sources/fonts/kumbh-sans-v20-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../src/sources/fonts/kumbh-sans-v20-latin-700.woff') format('woff'), /* Modern Browsers */
+       url('../src/sources/fonts/kumbh-sans-v20-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../src/sources/fonts/kumbh-sans-v20-latin-700.svg#KumbhSans') format('svg'); /* Legacy iOS */
+}
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,6 +34,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background: #F2F2F2;
+
 }
 
 code {
