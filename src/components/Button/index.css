@@ -17,6 +17,11 @@
 
 }
 
+.btn1:disabled {
+    cursor: not-allowed;
+    background-color: var(--gray);
+}
+
 .btn2 {
     width: 141px;
     height: 48px;

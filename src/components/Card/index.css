@@ -66,6 +66,9 @@
     color: var(--dark-gray);
     margin: 0px 5px 0px 5px;
 }
+.post-card:hover{
+    color: var(--dark-gray);
+}
 
 .location-card {
     position: absolute;
@@ -76,3 +79,4 @@ a {
     text-decoration: none;
     text-decoration-skip-ink:none;
 }
+

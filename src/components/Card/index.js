@@ -25,7 +25,6 @@ const Card = ({dataOffer}) => {
     return (
         <div className="card">
 
-            <Link to={`${url}` }className='Single'>
 
             <img
                 src={logo}
@@ -33,12 +32,15 @@ const Card = ({dataOffer}) => {
             />
             
             <p className="information-card">{date} <span className='point-card'>•</span>  {typeContract}</p>
+            
+            <Link to={`${url}` }className='Single'>
             <h1 className="post-card">{position}</h1>
+            </Link>
 
             <p className="company-card">{company}</p>
             <p className="location-card">{location}</p>
 
-            </Link>
+
         </div>
     );
 };

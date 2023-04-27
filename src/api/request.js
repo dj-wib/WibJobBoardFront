@@ -30,3 +30,20 @@ export const getOfferById = async (_id) => {
 };
 
 
+//post offer
+export const postOffer = async (offer) => {
+    try {
+        const response = await fetch(`http://localhost:8000/api/jobs`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(offer)
+        });
+        const newOffer = await response.json();
+        return newOffer;
+    } catch (error) {
+        console.error("error", error);
+        return null;
+    }
+};

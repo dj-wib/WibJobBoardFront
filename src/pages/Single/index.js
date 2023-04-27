@@ -59,31 +59,37 @@ const Single = () => {
             <Header/>
             <div className="single-offer-header">
                 <img src={logo} alt="logo business"/>
-                <h2>{company}</h2>
-                <p>{website}</p>
+                <div className="single-offer-header-left">
+                    <h2>{company}</h2>
+                    <p>{website}</p>
+                </div>
                 <Button className="btn2" value="Compagny site" />
             </div>
             <div className="single-offer-body">
+
                 <div className='single-offer-body-part1'>
-                    <p className="information-card">{date} <span className='point-card'>•</span>  {typeContract}</p>
-                    <h1>{position}</h1>
-                    <p>{location}</p>
+                    <div className="single-offer-body-part1-left">
+                        <p className="information-card">{date} <span className='point-card'>•</span>  {typeContract}</p>
+                        <h1>{position}</h1>
+                        <p className='location-single'>{location}</p>
+                    </div>
                     <Button className="btn1" value="Apply" />
                 </div>
+
                 <div className='single-offer-body-part2'>
-                    <p>{description}</p>
+                    <p className='description-single'>{description}</p>
                     <h3>Requirements</h3>
                     <p>{dataOffer.requirements && dataOffer.requirements.content}</p>
 
-                    <ul>
+                    <ul className='requirements-list'>
                         { dataOffer.requirements && dataOffer.requirements.items.map(item => (
                             <li>{item}</li>
                         ))
                         }
                     </ul>
-                    <h3>Role</h3>
+                    <h3>What You Will Do</h3>
                     <p>{dataOffer.role && dataOffer.role.content}</p>
-                    <ol>
+                    <ol className='role-list'>
                         {
                             dataOffer.role && dataOffer.role.items.map(item => (
                                 <li>{item}</li>
@@ -93,6 +99,8 @@ const Single = () => {
 
                 </div>
             </div>
+
+
             <div className="single-offer-footer">
                 <div className="single-offer-footer-left">
                     <h4>{}</h4>
@@ -102,9 +110,6 @@ const Single = () => {
                 </div>
             </div>
         </div>
-
-        
-
     );
 };
 
