@@ -1,0 +1,12 @@
+.footer-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--white);
+    border-radius: 6px;
+    padding: 48px;
+    margin-top: 80px;
+
+}

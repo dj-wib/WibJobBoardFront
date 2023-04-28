@@ -1,4 +1,4 @@
-.addoffer-container{
+.updateoffer-container{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -7,7 +7,7 @@
     position: relative;
 }
 
-.addoffer-form{
+.updateoffer-form{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,12 +20,12 @@
     padding: 20px;
 }
 
-.addoffer-form input, textarea, select{
+.updateoffer-form input, textarea, select{
     margin: 5px;
     border-radius: 6px;
     border: 1px solid rgba(25, 32, 45, 0.2);
 }
-.addoffer-form select{
+.updateoffer-form select{
     width: 80%;
     height: 70px;
     text-indent: 72px;
@@ -37,7 +37,7 @@
     color: #19202D;
 }
 
-.addoffer-form label {
+.updateoffer-form label {
     font-family: Kumbh Sans;
     font-size: 16px;
     font-weight: 400;

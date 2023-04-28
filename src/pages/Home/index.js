@@ -4,10 +4,7 @@ import SearchBar from "../../components/SearchBar";
 import CardContainer from "../../components/CardContainer";
 import { useState, useEffect } from 'react';
 import {getOffers} from '../../api/request';
-import Button from '../../components/Button';
-import { Link } from 'react-router-dom';
-
-
+import Footer from "../../components/Footer";
 
 const Home = () => {
     const [offer, setOffer] = useState([]);
@@ -28,9 +25,7 @@ const Home = () => {
             <Header />
             <SearchBar />
             <CardContainer datas={offer}/>
-            <Link to="/admin/create/" className='Add Offert' >
-            <Button className="btn1 header-btn" value="Add Offert"/>
-            </Link>
+            <Footer />
         </div>
     );
 };

@@ -1,42 +1,72 @@
-import './index.css';
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import Input from "../../components/Input";
+import Textarea from "../../components/Textarea";
+import Checkbox from "../../components/Checkbox";
 import Header from "../../components/Header";
-import Input from '../../components/Input';
-import Textarea from '../../components/Textarea';
-import Checkbox from '../../components/Checkbox';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
-const AddOffer = () => {
+const UpdateOffer = () => {
     const navigate = useNavigate();
+    
+    const { id } = useParams();
 
-    const [company, setCompany] = useState('');
-    const [logo, setLogo] = useState('');
-    const [logoBackground, setLogoBackground] = useState('');
-    const [position, setPosition] = useState('');
-
+    const [company, setCompany] = useState("");
+    const [logo, setLogo] = useState("");
+    const [logoBackground, setLogoBackground] = useState("");
+    const [position, setPosition] = useState("");
     const [contract, setContract] = useState(true);
-
-    const [location, setLocation] = useState('');
-    const [website, setWebsite] = useState('');
-    const [apply, setApply] = useState('');
-    const [description, setDescription] = useState('');
-    const [requirementsContent, setRequirementsContent] = useState('');
-
+    const [location, setLocation] = useState("");
+    const [website, setWebsite] = useState("");
+    const [apply, setApply] = useState("");
+    const [description, setDescription] = useState("");
+    const [requirementsContent, setRequirementsContent] = useState("");
     const [requirementsItem, setRequirementsItem] = useState([]);
-    const [requirementsItem1, setRequirementsItem1] = useState('');
-    const [requirementsItem2, setRequirementsItem2] = useState('');
-    const [requirementsItem3, setRequirementsItem3] = useState('');
-    const [requirementsItem4, setRequirementsItem4] = useState('');
-    const [requirementsItem5, setRequirementsItem5] = useState('');
-
-    const [roleContent, setRoleContent] = useState('');
-
+    const [requirementsItem1, setRequirementsItem1] = useState("");
+    const [requirementsItem2, setRequirementsItem2] = useState("");
+    const [requirementsItem3, setRequirementsItem3] = useState("");
+    const [requirementsItem4, setRequirementsItem4] = useState("");
+    const [requirementsItem5, setRequirementsItem5] = useState("");
+    const [roleContent, setRoleContent] = useState("");
     const [roleItem, setRoleItem] = useState([]);
-    const [roleItem1, setRoleItem1] = useState('');
-    const [roleItem2, setRoleItem2] = useState('');
-    const [roleItem3, setRoleItem3] = useState('');
-    const [roleItem4, setRoleItem4] = useState('');
-    const [roleItem5, setRoleItem5] = useState('');
+    const [roleItem1, setRoleItem1] = useState("");
+    const [roleItem2, setRoleItem2] = useState("");
+    const [roleItem3, setRoleItem3] = useState("");
+    const [roleItem4, setRoleItem4] = useState("");
+    const [roleItem5, setRoleItem5] = useState("");
+
+    useEffect(() => {
+        // Fetch the offer data from the API using the `id` parameter
+        fetch(`http://localhost:8000/api/jobs/${id}`)
+        .then((response) => response.json())
+        .then((data) => {
+            // Set the state variables to the fetched data
+            setCompany(data.company);
+            setLogo(data.logo);
+            setLogoBackground(data.logoBackground);
+            setPosition(data.position);
+            setContract(data.contract);
+            setLocation(data.location);
+            setWebsite(data.website);
+            setApply(data.apply);
+            setDescription(data.description);
+            setRequirementsContent(data.requirementsContent);
+            setRequirementsItem(data.requirementsItem);
+            setRequirementsItem1(data.requirementsItem[0] || "");
+            setRequirementsItem2(data.requirementsItem[1] || "");
+            setRequirementsItem3(data.requirementsItem[2] || "");
+            setRequirementsItem4(data.requirementsItem[3] || "");
+            setRequirementsItem5(data.requirementsItem[4] || "");
+            setRoleContent(data.roleContent);
+            setRoleItem(data.roleItem);
+            setRoleItem1(data.roleItem[0] || "");
+            setRoleItem2(data.roleItem[1] || "");
+            setRoleItem3(data.roleItem[2] || "");
+            setRoleItem4(data.roleItem[3] || "");
+            setRoleItem5(data.roleItem[4] || "");
+        })
+        .catch((error) => console.error(error));
+    }, [id]);
+
 
     useEffect(() => {
         // création d'un tableau regroupant les requirements
@@ -181,59 +211,58 @@ const AddOffer = () => {
     ///////////////////////
     //envoi du formulaire//
     ///////////////////////
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // Envoyer les données du formulaire
-        
-        //création d'un tableau de données de nom offer
-        const newOfferObject = {
-            "company":company,
-            "logo":logo,
-            "logoBackground":logoBackground,
-            "position":position,
-            "contract":contract,
-            "location":location,
-            "website":website,
-            "apply":apply,
-            "description":description,
-            "requirements":{
-                "content":requirementsContent,
-                "items":requirementsItem
-            },
-            "role":{
-                "content":roleContent,
-                "items":roleItem
-            }
+
+
+
+
+
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Create a new offer object with the updated state variables
+        const updatedOffer = {
+            company,
+            logo,
+            logoBackground,
+            position,
+            contract,
+            location,
+            website,
+            apply,
+            description,
+            requirementsContent,
+            requirementsItem,
+            roleContent,
+            roleItem,
         };
 
-        JSON.stringify(newOfferObject);
-        console.log(newOfferObject);
-
-        //appel à la requete postOffer
-        const postOffer = async (offer) => {
+        //appel à la requete put
+        const putOffer = async (offer, id) => {
             try {
-                const response = await fetch(`http://localhost:8000/api/jobs`, {
-                    method: "POST",
+            
+                const response = await fetch(`http://localhost:8000/api/jobs/${id}`, {
+                    method: "PUT",
                     headers: {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify(offer)
                 });
                 const newOffer = await response.json();
-                navigate("/");
                 return newOffer;
-            } 
-            catch (error) {
+            } catch (error) {
                 console.error("error", error);
                 return null;
             }
         };
-        postOffer(newOfferObject);
-        
+        console.log(id);
+        putOffer(updatedOffer, id);
+        navigate("/");
     };
 
-    return (
-        <div className="addoffer-container">
+        return (
+
+        <div className="updateoffer-container">
             <Header />
             <form className="addoffer-form" onSubmit={handleSubmit} >
                 <h1>Add Offer</h1>
@@ -242,7 +271,8 @@ const AddOffer = () => {
                     <label>Company :</label>
                     <Input 
                         type="text" placeholder="Company" id="inputCompany"
-                        onChange={handleChangeCompany} />
+                        onChange={handleChangeCompany}
+                        value={company} />
                 </div>
                 {/* logo */}
                 <div className='group-form'>
@@ -251,7 +281,8 @@ const AddOffer = () => {
                         type="text" 
                         placeholder="Url for the logo"
                         id="inputLogo"
-                        onChange={handleChangeLogo} />
+                        onChange={handleChangeLogo}
+                        value={logo} />
                 </div>
                 {/* Background logo */}
                 <div className='group-form'>
@@ -260,7 +291,8 @@ const AddOffer = () => {
                         type="text" 
                         placeholder="Url for a logo Background"
                         id="inputLogoBackground"
-                        onChange={handleChangelogoBackground} />
+                        onChange={handleChangelogoBackground}
+                        value={logoBackground} />
                 </div>
                 {/* position */}
                 <div className='group-form'>
@@ -269,8 +301,12 @@ const AddOffer = () => {
                         type="text" 
                         placeholder="The post" 
                         id="inputPosition"
-                        onChange={handleChangePosition}/>
+                        onChange={handleChangePosition}
+                        value={position} />
                 </div>
+
+
+
                 {/* contract */}
                 <div className='checkbox-container'>
                 <label>Type of contract :</label>
@@ -285,13 +321,16 @@ const AddOffer = () => {
                         status={checkedPartTime}
                         onChange={handleChangeCheckedPartTime}/>
                 </div>
+
+
                 {/* location */}
                 <div className='group-form'>
                     <label>Location :</label>
                     <Input 
                         type="text" 
                         placeholder="Location" 
-                        onChange={handleChangeLocation}/>
+                        onChange={handleChangeLocation}
+                        value={location}/>
                 </div>
                 {/* website */}
                 <div className='group-form'>
@@ -299,7 +338,8 @@ const AddOffer = () => {
                     <Input 
                         type="text" 
                         placeholder="Website link" 
-                        onChange={handleChangeWebsite}/>
+                        onChange={handleChangeWebsite}
+                        value={website}/>
                 </div>
                 {/* apply */}
                 <div className='group-form'>
@@ -307,7 +347,8 @@ const AddOffer = () => {
                     <Input 
                         type="text" 
                         placeholder="Apply link" 
-                        onChange={handleChangeApply} />
+                        onChange={handleChangeApply} 
+                        value={apply}/>
                 </div>
                 {/* description */}
                 <div className='group-form'>
@@ -316,17 +357,18 @@ const AddOffer = () => {
                         className='textarea' 
                         placeholder="Description" 
                         type="text" 
-                        onChange={handleChangeDescription}/>
+                        onChange={handleChangeDescription}
+                        value={description} />
                 </div>
-
                 {/* requirements */}
-                <div className='group-form'>
+                {/* <div className='group-form'>
                     <label>Requirements :</label>
                     <Textarea 
                         className='textarea' 
                         placeholder="Details for Requirements" 
                         type="text" 
-                        onChange={handleChangeRequirementsContent}/>
+                        onChange={handleChangeRequirementsContent}
+                        value={requirementsContent} />
                 </div>
 
                 <div className='group-form'>
@@ -341,19 +383,21 @@ const AddOffer = () => {
                         <option value="5">5</option>
                     </select>
                 </div>
-                <div id="requirement-input-container">
+
+                <div id="requirement-input-container"> */}
                 {/* // a compléter avec les inputsselon le nombre du select  */}
-                    { inputElements }
-                </div>
+                    {/* { inputElements }
+                </div> */}
 
                 {/* role */}
-                <div className='group-form'>
+                {/* <div className='group-form'>
                     <label>Role :</label>
                     <Textarea 
                         className='textarea' 
                         placeholder="Details What will you do" 
                         type="text" 
-                        onChange={handleChangeRoleContent}/>
+                        onChange={handleChangeRoleContent}
+                        value={roleContent} />
                 </div>
                 <div className='group-form'>
                     <label htmlFor="role-select">Choose number of Task:</label>
@@ -369,12 +413,14 @@ const AddOffer = () => {
                 </div>
                 <div id="role-input-container">
                     { inputElementsRole }
-                </div>
-                <input className="btn1" type="submit" value="Add Offer"/>
-                
+                </div> */}
+
+                <input className="btn1" type="submit" value="Update Offer"/>
             </form>
         </div>
     );
 };
 
-export default AddOffer;
+
+
+export default UpdateOffer;

@@ -5,7 +5,7 @@ const LogingForm = () => {
         <form className='logingform'>
             <h1 className='title-loging-form'>Se connecter</h1>
             {/* /ferme le form and refresh page */}
-            <span onClick={() => window.location.reload()} class="span-close" title="Close foem">&times;</span>
+            <span onClick={() => window.location.reload()} className="span-close" title="Close foem">&times;</span>
 
             <label htmlFor="input-user" className='label-loging-form'>Nom d'utilisateur</label>
             <input type='email' id='input-user' className='input-user' name='input-user' placeholder='Email'/>

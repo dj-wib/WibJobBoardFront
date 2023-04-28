@@ -1,7 +1,7 @@
 import './index.css';
 
 
-const Textarea = ({placeholder, onChange} ) => {
+const Textarea = ({placeholder, onChange, value} ) => {
 
 
         return (
@@ -11,6 +11,7 @@ const Textarea = ({placeholder, onChange} ) => {
                 type="text"
                 placeholder={placeholder}
                 onChange={onChange}
+                value={value}
                 />
             </div>
         );

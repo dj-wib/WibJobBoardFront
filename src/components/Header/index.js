@@ -11,7 +11,6 @@ import LogingForm from '../LogingForm';
 const Header = () => {
     const [showForm, setShowForm] = useState(false);
 
-
     return (
         <div className="header">
             <Logo />

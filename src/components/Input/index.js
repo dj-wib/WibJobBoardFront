@@ -2,7 +2,7 @@ import './index.css';
 import search from '../../sources/imgs/search.svg';
 import localisation from '../../sources/imgs/localisationIcon.svg';
 
-const Input = ({placeholder, type, id, onChange, key} ) => {
+const Input = ({placeholder, type, id, onChange, key, value} ) => {
 
     let srcIcone;
 
@@ -25,6 +25,7 @@ switch (type) {
                 className='input'
                 type="text"
                 placeholder={placeholder}
+                value={value}
                 />
             <img className='icon-input' src={srcIcone} alt='logo type of input'></img>
             </div>
@@ -40,6 +41,7 @@ switch (type) {
                 type="text"
                 placeholder={placeholder}
                 onChange={onChange}
+                value={value}
                 />
             </div>
         );}
