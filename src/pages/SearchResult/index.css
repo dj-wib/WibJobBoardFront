@@ -1,0 +1,14 @@
+.home-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #F2F2F2;
+
+    position: relative;
+}
+
+link{
+    text-decoration: none;
+    text-decoration-skip-ink: none;
+}

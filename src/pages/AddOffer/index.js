@@ -5,6 +5,7 @@ import Textarea from '../../components/Textarea';
 import Checkbox from '../../components/Checkbox';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { postOffer } from '../../api/request';
 
 const AddOffer = () => {
     const navigate = useNavigate();
@@ -210,25 +211,10 @@ const AddOffer = () => {
         console.log(newOfferObject);
 
         //appel à la requete postOffer
-        const postOffer = async (offer) => {
-            try {
-                const response = await fetch(`http://localhost:8000/api/jobs`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(offer)
-                });
-                const newOffer = await response.json();
-                navigate("/");
-                return newOffer;
-            } 
-            catch (error) {
-                console.error("error", error);
-                return null;
-            }
-        };
         postOffer(newOfferObject);
+        navigate("/");
+        window.location.reload();
+
         
     };
 

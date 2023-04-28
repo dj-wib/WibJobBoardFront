@@ -1,7 +1,40 @@
-.card-container{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 30px;
-    
-    margin-bottom: 56px;
+@media (min-width: 25em) {
+    .card-container{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+        
+        margin-bottom: 56px;
+    }
+}
+
+@media (min-width: 36em) {
+
+    /* équivalent 576px */
+    .container {
+        max-width: 54rem;
+    }
+
+    .card-container{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        
+        margin-bottom: 56px;
+    }
+}
+
+@media (min-width: 75em) {
+
+    /* équivalent 1200px */
+    .container {
+        max-width: 116rem;
+    }
+    .card-container{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 30px;
+        
+        margin-bottom: 56px;
+    }
 }

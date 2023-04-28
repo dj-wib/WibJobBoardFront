@@ -1,5 +1,3 @@
-const API_KEY = "";
-const BASE_URL = 'localhost:8000';
 
 // get all Offers
 export const getOffers = async () => {
@@ -30,46 +28,49 @@ export const getOfferById = async (_id) => {
 };
 
 
-// //post offer
-// export const postOffer = async (offer) => {
-//     try {
-//         const response = await fetch(`http://localhost:8000/api/jobs`, {
-//             method: "POST",
-//             headers: {
-//                 "Content-Type": "application/json"
-//             },
-//             body: JSON.stringify(offer)
-//         });
-//         const newOffer = await response.json();
-//         return newOffer;
-//     } catch (error) {
-//         console.error("error", error);
-//         return null;
-//     }
-// };
+//post offer
+export const postOffer = async (offer) => {
+    try {
+        const response = await fetch(`http://localhost:8000/api/jobs`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(offer)
+        });
+        const newOffer = await response.json();
+        return newOffer;
+    } 
+    catch (error) {
+        console.error("error", error);
+        return null;
+    }
+};
 
 
-// //Delete offer
-// export const deleteOffer = async (_id) => {
-//     try {
-//         const response = await fetch(`http://localhost:8000/api/jobs/${_id}`, {
-//             method: "DELETE",
-//             headers: {
-//                 "Content-Type": "application/json"
-//             }
-//         });
-//         const newOffer = await response.json();
-//         return newOffer;
-//     } catch (error) {
-//         console.error("error", error);
-//         return null;
-//     }
-// };
+//Delete offer
+export const deleteOffer = async (_id) => {
+    try {
+        const response = await fetch(`http://localhost:8000/api/jobs/${_id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        const newOffer = await response.json();
+        return newOffer;
+    } catch (error) {
+        console.error("error", error);
+        return null;
+    }
+};
+
 
 //put offer
-export const putOffer = async (offer) => {
+export const putOffer = async (offer, id) => {
     try {
-        const response = await fetch(`http://localhost:8000/api/jobs/${offer._id}`, {
+    
+        const response = await fetch(`http://localhost:8000/api/jobs/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -83,3 +84,15 @@ export const putOffer = async (offer) => {
         return null;
     }
 };
+
+//search offer
+export const getSearchOffer = async (search) => {
+    try {
+        const response = await fetch(`http://localhost:8000/api/jobs/search?${search}`);
+        const offers = await response.json();
+        return offers;
+    } catch (error) {
+        console.error("error", error);
+        return null;
+    }
+}

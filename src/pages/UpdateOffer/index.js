@@ -5,6 +5,7 @@ import Input from "../../components/Input";
 import Textarea from "../../components/Textarea";
 import Checkbox from "../../components/Checkbox";
 import Header from "../../components/Header";
+import { putOffer } from '../../api/request';
 
 const UpdateOffer = () => {
     const navigate = useNavigate();
@@ -231,27 +232,10 @@ const UpdateOffer = () => {
             roleItem,
         };
 
-        //appel à la requete put
-        const putOffer = async (offer, id) => {
-            try {
-            
-                const response = await fetch(`http://localhost:8000/api/jobs/${id}`, {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(offer)
-                });
-                const newOffer = await response.json();
-                return newOffer;
-            } catch (error) {
-                console.error("error", error);
-                return null;
-            }
-        };
-        console.log(id);
+        //appel à la requete putOffer
         putOffer(updatedOffer, id);
         navigate("/");
+        window.location.reload();
     };
 
         return (
@@ -259,7 +243,7 @@ const UpdateOffer = () => {
         <div className="updateoffer-container">
             <Header />
             <form className="updateoffer-form" onSubmit={handleSubmit} >
-                <h1>Add Offer</h1>
+                <h1>Update Offer</h1>
                 {/* entreprise */}
                 <div className='group-form'>
                     <label>Company :</label>
@@ -414,7 +398,5 @@ const UpdateOffer = () => {
         </div>
     );
 };
-
-
 
 export default UpdateOffer;

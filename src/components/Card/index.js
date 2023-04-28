@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import Button from '../Button';
 import { useNavigate } from 'react-router-dom';
+import { deleteOffer } from '../../api/request';
 
 
 const Card = ({dataOffer}) => {
@@ -27,22 +28,7 @@ const Card = ({dataOffer}) => {
     
 
     const handleClik = async (_id) => {
-        //Delete offer
-    const deleteOffer = async (_id) => {
-    try {
-        const response = await fetch(`http://localhost:8000/api/jobs/${_id}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
-        const newOffer = await response.json();
-        return newOffer;
-    } catch (error) {
-        console.error("error", error);
-        return null;
-    }
-};
+
         deleteOffer(_id);
         window.scrollTo(0, 0);
         window.location.reload();
