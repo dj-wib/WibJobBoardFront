@@ -1,3 +1,4 @@
+import './index.css';
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Input from "../../components/Input";
@@ -211,16 +212,9 @@ const UpdateOffer = () => {
     ///////////////////////
     //envoi du formulaire//
     ///////////////////////
-
-
-
-
-
-
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Create a new offer object with the updated state variables
+        //création d'un tableau de données de nom offer
         const updatedOffer = {
             company,
             logo,
@@ -264,7 +258,7 @@ const UpdateOffer = () => {
 
         <div className="updateoffer-container">
             <Header />
-            <form className="addoffer-form" onSubmit={handleSubmit} >
+            <form className="updateoffer-form" onSubmit={handleSubmit} >
                 <h1>Add Offer</h1>
                 {/* entreprise */}
                 <div className='group-form'>
